@@ -1,7 +1,7 @@
 function zaplanujMisje(nazwaMisji, typMisji) {
     return {
         nazwa: nazwaMisji,
-        typ: "Badawcza",
+        typ: typMisji,
         zaloga: [],
         dystans: 0,
         celeBadawcze: [],
@@ -24,15 +24,20 @@ function przemierzDystans(misja, odleglosc) {
     misja.dystans += odleglosc
 }
 
+function dodajCeleBadawcze(misja, cele) {
+    misja.celeBadawcze.push(cele)
+}
+
 function raportMisji(misja) {
     console.log("===RAPORT MISJI===")
-    console.log("Nazwa:", misjaBeta.nazwa)
-    console.log("Typ:", misjaBeta.typ)
-    console.log("Załoga:", misjaBeta.zaloga)
-    console.log("Dystans:", misjaBeta.dystans)
-    console.log("Cwele badawcze", misjaBeta.celeBadawcze)
-    console.log("Sprzęt:", misjaBeta.ladownia.narzedzia)
-    console.log("Zapasy:", misjaBeta.ladownia.zapasy)
+    console.log("NAZWA:", misja.nazwa)
+    console.log("TYP:", misja.typ)
+    console.log("ZAŁOGA:", misja.zaloga)
+    console.log("PRZEBYTY DYSTANS:", misja.dystans)
+    console.log("CELE BADAWCZE", misja.celeBadawcze)
+    console.log("SPRZĘT:", misja.ladownia.narzedzia)
+    console.log("ZAPASY:", misja.ladownia.zapasy)
+    console.log("===KONIEC RAPORTU===")
 }
 
 
@@ -47,14 +52,8 @@ przemierzDystans(misjaBeta, 25)
 zaladujSprzet(misjaBeta, "Kamera wysokiej rozdzielczości")
 zaladujSprzet(misjaBeta, "Spektometr pola magnetycznego")
 
-
-
+dodajCeleBadawcze(misjaBeta, "Zbadanie siły grawitacji Jowisza")
 console.log(raportMisji(misjaBeta))
-
-
-
-
-
 
 
 //////////////////////////////////////////////////////////////////////////////////
