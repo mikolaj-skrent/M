@@ -16,7 +16,7 @@ document.getElementById("count-words").innerHTML = 0;
 
 function analyzeText() {
     countWords();
-
+    countSigns();
 }
 
 
@@ -28,6 +28,11 @@ function analyzeText() {
 
 // 1. liczba znaków - osobno ze spacjami i bez
 function countSigns() {
+    const textWithSpaces = document.getElementById("user-input").value
+    const textTrimmed = text.trim()
+    const textWithoutSpaces = 
+    document.getElementById("count-signs-with-spaces").innerText = text.length
+    document.getElementById("count-signs-without-spaces").innerText = textWithoutSpaces.length
 
 }
 
