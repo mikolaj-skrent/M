@@ -55,7 +55,7 @@ function countSignsWithoutSpaces() {
             letterCounter += 1
             console.log(letterCounter)
         }
-
+      
     }
 
 
@@ -75,54 +75,58 @@ function countWords() {
 
 
 
-// 3. najdłuższe słowo
-function longestWord() {
+// // 3. najdłuższe słowo
+// function longestWord() {
 
-}
-
-
-
-// 4. średnia długość słowa
-function avgLenght() {
-
-}
+// }
 
 
 
-// 5. procent wielkich liter w tekście
-function bigLetters() {
+// // 4. średnia długość słowa
+// function avgLenght() {
 
-    const textarea = document.querySelector('textarea');
-    const text = textarea.value;
-    let bigLetters = 0
-    const textTrimmed = text.trim()
-
-
-    for (let i = 0; i < textTrimmed.length; i++) {
-        const letter = textTrimmed.charAt(i);
-
-        if (letter !== ' ') {
-            bigLetters += 1
-            console.log(bigLetters)
-        }
-
-    }
+// }
 
 
 
+// // 5. procent wielkich liter w tekście
+// function bigLetters() {
 
-    document.getElementById("count-signs-without-spaces").innerText = letterCounter
+//     const textarea = document.querySelector('textarea');
+//     const text = textarea.value;
+//     let bigLetters = 0
+//     const textTrimmed = text.trim()
+
+
+//     for (let i = 0; i < textTrimmed.length; i++) {
+//         const letter = textTrimmed.charAt(i);
+
+//         if (letter !== ' ') {
+//             bigLetters += 1
+//             console.log(bigLetters)
+//         }
+
+//     }
 
 
 
-}
+
+//     document.getElementById("count-signs-without-spaces").innerText = letterCounter
+
+
+
+// }
 
 
 
 // 6. czas czytania, zakładając 200 słów na minutę
 function readSpeed() {
-    const characterReadPerMinute = 200
+    const letterCounter = countSignsWithoutSpaces()
 
+
+
+
+    const characterReadPerMinute = 200
  const  minutes = letterCounter / characterReadPerMinute
  console.log(minutes)
 
