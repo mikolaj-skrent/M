@@ -57,7 +57,7 @@ function countSignsWithoutSpaces() {
         }
       
     }
-
+return letterCounter
 
     document.getElementById("count-signs-without-spaces").innerText = letterCounter
 }
