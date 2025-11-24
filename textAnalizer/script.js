@@ -1,21 +1,13 @@
-// <!-- Stwórz stronę z polem tekstowym, do którego można wpisać tekst i po kliknięciu przycisku aplikacja wyświetli:-->
-
-// <!-- 1. liczbę znaków - osobno ze spacjami i bez -->
-// <!-- 2. liczbę słów -->
-// <!-- 3. najdłuższe słowo -->
-// <!-- 4. średnią długość słowa -->
-// <!-- 5. procent wielkich liter w tekście -->
-// <!-- 6. czas czytania, zakładając 200 słów na minutę -->
+// nie działa funkcja średniej długości słowa oraz funkcja liczenia znaków bez spacji
 
 
 
-//////////////////////////////////////////////////////
-//           GŁÓWNA FUNKCJA ANALIZY TEKSTU          //
-//////////////////////////////////////////////////////
 document.getElementById("count-words").innerHTML = 0;
 document.getElementById("count-signs-with-spaces").innerHTML = 0;
 document.getElementById("count-signs-without-spaces").innerHTML = 0;
 document.getElementById("read-speed").innerHTML = 0;
+document.getElementById("longestWord").innerHTML = "---";
+
 
 
 
@@ -24,13 +16,9 @@ function analyzeText() {
     countSigns();
     countSignsWithoutSpaces();
     readSpeed();
+    bigLetters();
+    longestWord();
 }
-
-
-//////////////////////////////////////////////////////
-//           GŁÓWNA FUNKCJA ANALIZY TEKSTU          //
-//////////////////////////////////////////////////////
-
 
 
 // 1. liczba znaków - osobno ze spacjami i bez
@@ -63,6 +51,9 @@ return letterCounter
 }
 
 
+
+
+
 // 2. liczba słów
 function countWords() {
     const text = document.getElementById("user-input").value
@@ -75,47 +66,62 @@ function countWords() {
 
 
 
-// // 3. najdłuższe słowo
-// function longestWord() {
+// 3. najdłuższe słowo
+function longestWord() {
+    const words = document.querySelector('textarea').value
+        .trim()
+        .split(" ")
+        .filter(w => w.length > 0);
 
-// }
+    if (words.length === 0) {
+        document.getElementById("longestWord").innerText = "";
+        return;
+    }
 
+    let longest = "";
+    for (let word of words) {
+        if (word.length > longest.length) {
+            longest = word;
+        }
+    }
 
-
-// // 4. średnia długość słowa
-// function avgLenght() {
-
-// }
-
-
-
-// // 5. procent wielkich liter w tekście
-// function bigLetters() {
-
-//     const textarea = document.querySelector('textarea');
-//     const text = textarea.value;
-//     let bigLetters = 0
-//     const textTrimmed = text.trim()
-
-
-//     for (let i = 0; i < textTrimmed.length; i++) {
-//         const letter = textTrimmed.charAt(i);
-
-//         if (letter !== ' ') {
-//             bigLetters += 1
-//             console.log(bigLetters)
-//         }
-
-//     }
+    document.getElementById("longestWord").innerText = longest;
+}
 
 
 
 
-//     document.getElementById("count-signs-without-spaces").innerText = letterCounter
+// 4. średnia długość słowa
+function averageWordLength() {
+ 
+
+    // PROBOWAŁEM PARU SPOSOBOW ALE NIE WIEM CO ZBYTNIO ZROBIC
+}
 
 
 
-// }
+
+
+
+// 5. procent wielkich liter w tekście
+function bigLetters() {
+
+    const text = document.querySelector('textarea').value;
+    let bigLettersAmount = 0;
+
+    for (let i = 0; i < text.length; i++) {
+        const char = text.charAt(i);
+
+        if (char === char.toUpperCase() && char !== char.toLowerCase()) {
+            bigLettersAmount++;
+        }
+    }
+
+    document.getElementById("bigLettersAmount").innerText = bigLettersAmount;
+}
+
+
+
 
 
 
